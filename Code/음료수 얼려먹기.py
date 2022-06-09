@@ -21,6 +21,18 @@ def bfs(graph, x, y):
                     graph[nx][ny] = -1
                     queue.append([nx, ny])
 
+def dfs(graph, x, y):
+    if x<0 or x>=n or y<0 or y>=m:
+        return
+    if graph[x][y] != 0:
+        return
+    graph[x][y] = -1
+    for t in range(4):
+        nx = x+dx[t]
+        ny = y+dy[t]
+        dfs(graph, nx, ny)
+    return
+
 result = 0
 for i in range(n):
     for j in range(m):
