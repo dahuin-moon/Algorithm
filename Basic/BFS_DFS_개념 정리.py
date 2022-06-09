@@ -27,6 +27,7 @@ def dfs(graph, v, visited):
 
 from collections import deque
 def bfs(graph, start, visited):
+    # 초기 위치를 넣어주고 while문 내에서 pop!
     queue = deque([start])
     visited[start] = True
     while queue:
