@@ -23,6 +23,8 @@ for i in range(n):
 
 def spread(lab, v):
     for i in v:
+        # 주의사항! ~deque의 초기값~
+        # deque([i])로 초기값을 넣는다는 것은 queue.append(i)를 하는 것과 동일함!!! 자꾸 잊음!!
         queue = deque([i])
         visited  = [[False]*m for _ in range(n)]
         
