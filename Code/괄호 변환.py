@@ -1,4 +1,4 @@
-#Programmers(60058)::BFS/DFS
+#Programmers(60058)::재귀
 
 def balanced(p):
     u = ''
@@ -9,6 +9,9 @@ def balanced(p):
         else:
             count-=1
         u+=p[i]
+        # 아래와 같이 구문을 추가하면 u가 올바른 문장인지 또한 확인 가능
+        # -> right 필요하지 않아짐!
+        # if count < 0 : r = False
         if count == 0:
             break
     return i          
@@ -31,28 +34,21 @@ def solution(p):
     if len(p) == 0:
         return p
     
-    answer = ''
-    length = len(p)
-    while length != len(answer):
-        i = balanced(p)
-        u = p[:i+1]
-        v = p[i+1:]
-        if right(u):
-            answer += u
-            p = v
-        else:
-            def reverse(str):
-                ret = ''
-                for i in str:
-                    if i=='(':
-                        ret+=')'
-                    else:
-                        ret+='('
-                return ret
-                    
-            temp = '('+solution(v)+')'+reverse(u[1:len(u)-1])
-            answer+=temp
-    
-    return answer
+    i = balanced(p)
+    u = p[:i+1]
+    v = p[i+1:]
+    if right(u):
+        return u+solution(v)
+    else:
+        def reverse(str):
+            ret = ''
+            for i in str:
+                if i=='(':
+                    ret+=')'
+                else:
+                    ret+='('
+            return ret
+                
+        return '('+solution(v)+')'+reverse(u[1:len(u)-1])
 
 print(solution('()))((()'))
