@@ -1,5 +1,7 @@
 # 백준(14888)::BFS/DFS
 # itertools를 사용하지 않는 permutation 사용은 시간 초과!
+# 1번째 풀이 time: 시간 초과
+# 2번째 풀이 time: 대략 10m
 
 n = int(input())
 numbers = list(map(int, input().split()))
